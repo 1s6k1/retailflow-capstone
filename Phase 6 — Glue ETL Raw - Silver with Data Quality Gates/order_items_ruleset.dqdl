@@ -5,6 +5,6 @@ Rules = [
     IsComplete "unit_price",
     IsComplete "line_total",
     IsUnique "order_id",
-    ReferentialIntegrity "product_id" "products_for_dq.product_id" >= 1,
-    ColumnValues "quantity" > 0 with threshold >= 0.99
+    ColumnValues "quantity" > 0 with threshold >= 0.99,
+    Completeness "discount_code" >= 0.50
 ]

@@ -4,5 +4,6 @@ Rules = [
     IsComplete "status",
     IsUnique "order_id",
     ColumnValues "store_region" in ["North","South","East","West","Central"] with threshold >= 0.99,
-    ColumnValues "status" in ["Completed","Returned","Cancelled"] with threshold >= 0.99 
+    ColumnValues "status" in ["Completed","Returned","Cancelled"] with threshold >= 0.99,
+    Completeness "discount_code" >= 0.50
 ]
