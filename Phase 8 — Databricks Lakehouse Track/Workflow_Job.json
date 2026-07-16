@@ -1,0 +1,67 @@
+{
+  "name": "Clickstream_End_To_End_Pipeline",
+  "email_notifications": {
+    "on_failure": [
+      "161sklove@gmail.com"
+    ],
+    "no_alert_for_skipped_runs": false
+  },
+  "webhook_notifications": {},
+  "notification_settings": {
+    "no_alert_for_skipped_runs": false,
+    "no_alert_for_canceled_runs": false
+  },
+  "timeout_seconds": 0,
+  "max_concurrent_runs": 1,
+  "tasks": [
+    {
+      "task_key": "Bronze_Ingestion",
+      "run_if": "ALL_SUCCESS",
+      "spark_python_task": {
+        "python_file": "/Workspace/Users/161suresh@gmail.com/retailflow/01_bronze_autoloader.py"
+      },
+      "existing_cluster_id": "0716-050056-8usp94i8",
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {},
+      "disabled": false
+    },
+    {
+      "task_key": "Silver_DLT",
+      "depends_on": [
+        {
+          "task_key": "Bronze_Ingestion"
+        }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "pipeline_task": {
+        "pipeline_id": "1df5482f-9936-446c-ac19-c29722b52a42"
+      },
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {},
+      "disabled": false
+    },
+    {
+      "task_key": "Gold_Aggregation",
+      "depends_on": [
+        {
+          "task_key": "Silver_DLT"
+        }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "spark_python_task": {
+        "python_file": "/Workspace/Users/161suresh@gmail.com/retailflow/03_gold_aggregation.py"
+      },
+      "existing_cluster_id": "0716-050056-8usp94i8",
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {},
+      "disabled": false
+    }
+  ],
+  "queue": {
+    "enabled": true
+  },
+  "performance_target": "PERFORMANCE_OPTIMIZED"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "1df5482f-9936-446c-ac19-c29722b52a42",
+  "pipeline_type": "WORKSPACE",
+  "name": "Clickstream_Silver_Pipeline",
+  "libraries": [
+    {
+      "file": {
+        "path": "/Workspace/Users/161suresh@gmail.com/retailflow/02_dlt_silver_pipeline.py"
+      }
+    }
+  ],
+  "schema": "clickstream_schema",
+  "continuous": false,
+  "development": false,
+  "photon": true,
+  "channel": "CURRENT",
+  "catalog": "main",
+  "serverless": true,
+  "root_path": "/Workspace/Users/161suresh@gmail.com/New Pipeline 2026-07-16 12:18"
+}
